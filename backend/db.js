@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
+const { PASSWORD } = require('../congig');
 
-mongoose.connect("mongodb+srv://smartsaurabh2002:<password>@cluster0.jyohy4a.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+mongoose.connect("mongodb+srv://smartsaurabh2002:PASSWORD@cluster0.jyohy4a.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
 
 var userSchema = new mongoose.Schema({
     username: {
@@ -31,8 +32,21 @@ var userSchema = new mongoose.Schema({
     }
 });
 
+const accountSchema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId, // Reference to User model
+        ref: 'User',
+        required: true
+    },
+    balance: {
+        type: Number,
+        required: true
+    }
+});
+
+const Account = mongoose.model('Account', accountSchema);
 const User = mongoose.model('User', userSchema);
 
 module.exports = {
-    User
+    User, Account
 };

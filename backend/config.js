@@ -1,2 +1,3 @@
 const JWT_SECRET = "saurabhSecret";
-module.exports = JWT_SECRET
+const PASSWORD = "aNSizk8wn2O5xm1c";
+module.exports = { JWT_SECRET, PASSWORD }
