@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
-const { PASSWORD } = require('../congig');
+const { PASSWORD } = require("./config");
 
-mongoose.connect("mongodb+srv://smartsaurabh2002:PASSWORD@cluster0.jyohy4a.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+mongoose.connect("mongodb+srv://smartsaurabh2002:" + PASSWORD + "@cluster0.jyohy4a.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
 
-var userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
@@ -48,5 +48,6 @@ const Account = mongoose.model('Account', accountSchema);
 const User = mongoose.model('User', userSchema);
 
 module.exports = {
-    User, Account
+    User,
+    Account
 };
